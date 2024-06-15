@@ -38,7 +38,7 @@ public struct MultimodalInputField: View {
 
   @Environment(\.submitHandler) var submitHandler
 
-  @State private var selectedImages = [Image]()
+  @State private var selectedImage: Image?
 
   @State private var isChooseAttachmentTypePickerShowing = false
   @State private var isAttachmentPickerShowing = false
@@ -80,21 +80,12 @@ public struct MultimodalInputField: View {
           .padding(.vertical, 4)
           .onSubmit(submit)
 
-          if selectedImages.count > 0 {
-            ScrollView(.horizontal) {
-              LazyHStack {
-                ForEach(0 ..< selectedImages.count, id: \.self) { i in
-                  HStack {
-                    selectedImages[i]
-                      .resizable()
-                      .scaledToFit() // 使用scaledToFit确保图片按比例缩放
-                      .frame(width: 150, height: 150) // 增大显示大小
-                      .cornerRadius(8)
-                  }
-                }
-              }
-            }
-            .frame(height: 150)
+          if let selectedImage {
+            selectedImage
+              .resizable()
+              .scaledToFit() // 使用scaledToFit确保图片按比例缩放
+              .frame(width: 150, height: 150) // 增大显示大小
+              .cornerRadius(8)
           }
         }
         .padding(.horizontal, 8)
@@ -123,16 +114,16 @@ public struct MultimodalInputField: View {
         Text("Photo & Video Library")
       }
     }
-    .photosPicker(isPresented: $isAttachmentPickerShowing, selection: $selection)
+    .photosPicker(isPresented: $isAttachmentPickerShowing, selection: $selection, maxSelectionCount: 1)
     .onChange(of: selection) { _ in
       Task {
-        selectedImages.removeAll()
+        selectedImage = nil
 
-        for item in selection {
+        if let item = selection.first {
           if let data = try? await item.loadTransferable(type: Data.self) {
             if let uiImage = UIImage(data: data) {
               let image = Image(uiImage: uiImage)
-              selectedImages.append(image)
+              selectedImage = image
             }
           }
         }
@@ -146,35 +137,31 @@ public struct MultimodalInputField: View {
     @State var userInput: String = ""
     @State var selectedItems = [PhotosPickerItem]()
 
-    @State private var selectedImages = [Image]()
+    @State private var selectedImage: Image?
 
     var body: some View {
       MultimodalInputField(text: $userInput, selection: $selectedItems)
         .onChange(of: selectedItems) { _ in
           Task {
-            selectedImages.removeAll()
+            selectedImage = nil
 
-            for item in selectedItems {
+            if let item = selectedItems.first {
               if let data = try? await item.loadTransferable(type: Data.self) {
                 if let uiImage = UIImage(data: data) {
                   let image = Image(uiImage: uiImage)
-                  selectedImages.append(image)
+                  selectedImage = image
                 }
               }
             }
           }
         }
 
-      List {
-        ForEach(0 ..< $selectedImages.count, id: \.self) { i in
-          HStack {
-            selectedImages[i]
-              .resizable()
-              .scaledToFill()
-              .frame(width: .infinity)
-              .cornerRadius(8)
-          }
-        }
+      if let selectedImage {
+        selectedImage
+          .resizable()
+          .scaledToFit()
+          .frame(width: .infinity)
+          .cornerRadius(8)
       }
     }
   }
