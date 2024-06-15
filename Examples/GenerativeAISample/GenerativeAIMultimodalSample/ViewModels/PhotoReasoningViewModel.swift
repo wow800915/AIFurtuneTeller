@@ -60,7 +60,7 @@ class PhotoReasoningViewModel: ObservableObject {
       errorMessage = nil
       outputText = ""
 
-      let prompt = "Look at the image(s), and then answer the following question: \(userInput)"
+      let prompt = "中文回答,幫我算此人命相,並用幽默誇張的方法回覆,如果不知道怎麼算就亂掰即可,如果不是人像也就假裝有個人亂掰即可: \(userInput)"
 
       var images = [any ThrowingPartsRepresentable]()
       for item in selectedItems {

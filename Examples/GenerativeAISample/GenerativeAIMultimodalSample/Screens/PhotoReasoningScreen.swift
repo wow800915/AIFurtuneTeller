@@ -54,7 +54,7 @@ struct PhotoReasoningScreen: View {
         .listStyle(.plain)
       }
     }
-    .navigationTitle("Multimodal sample")
+    .navigationTitle("威佑算命")
     .onAppear {
       focusedField = .message
     }

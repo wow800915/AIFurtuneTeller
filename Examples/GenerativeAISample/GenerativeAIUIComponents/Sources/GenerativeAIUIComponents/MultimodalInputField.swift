@@ -73,7 +73,7 @@ public struct MultimodalInputField: View {
 
         VStack(alignment: .leading) {
           TextField(
-            "Upload an image, and then ask a question about it",
+            "請選擇相片",
             text: $text,
             axis: .vertical
           )
@@ -87,14 +87,14 @@ public struct MultimodalInputField: View {
                   HStack {
                     selectedImages[i]
                       .resizable()
-                      .scaledToFill()
-                      .frame(width: 50, height: 50)
+                      .scaledToFit() // 使用scaledToFit确保图片按比例缩放
+                      .frame(width: 150, height: 150) // 增大显示大小
                       .cornerRadius(8)
                   }
                 }
               }
             }
-            .frame(height: 50)
+            .frame(height: 150)
           }
         }
         .padding(.horizontal, 8)
@@ -108,7 +108,7 @@ public struct MultimodalInputField: View {
         }
 
         Button(action: submit) {
-          Text("Go")
+          Text("開始算命")
         }
         .padding(.top, 8)
       }
