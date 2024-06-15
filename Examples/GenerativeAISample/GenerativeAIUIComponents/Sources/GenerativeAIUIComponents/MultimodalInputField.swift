@@ -97,12 +97,12 @@ public struct MultimodalInputField: View {
           )
           .stroke(Color(UIColor.systemFill), lineWidth: 1)
         }
-
-        Button(action: submit) {
-          Text("開始算命")
-        }
-        .padding(.top, 8)
       }
+
+      Button(action: submit) {
+        Text("開始算命")
+      }
+      .padding(.top, 8)
     }
     .padding(.horizontal)
     .confirmationDialog(
