@@ -48,6 +48,14 @@ class PhotoReasoningViewModel: ObservableObject {
   }
 
   func reason() async {
+    await generateOutput(prompt: "中文回答,幫我算此人命相,並用幽默誇張的方法回覆,如果不知道怎麼算就亂掰即可,如果不是人像也就假裝有個人亂掰即可: \(userInput)")
+  }
+
+  func name() async {
+    await generateOutput(prompt: "中文回答,幫我給此人一個命名,並用幽默誇張的方法回覆,如果不知道怎麼命名就亂掰即可,如果不是人像也就假裝有個人亂掰即可: \(userInput)")
+  }
+
+  private func generateOutput(prompt: String) async {
     defer {
       inProgress = false
     }
@@ -59,8 +67,6 @@ class PhotoReasoningViewModel: ObservableObject {
       inProgress = true
       errorMessage = nil
       outputText = ""
-
-      let prompt = "中文回答,幫我算此人命相,並用幽默誇張的方法回覆,如果不知道怎麼算就亂掰即可,如果不是人像也就假裝有個人亂掰即可: \(userInput)"
 
       var images = [any ThrowingPartsRepresentable]()
       for item in selectedItems {

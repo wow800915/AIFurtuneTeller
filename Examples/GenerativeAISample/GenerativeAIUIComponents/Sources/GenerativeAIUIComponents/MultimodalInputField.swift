@@ -37,6 +37,7 @@ public struct MultimodalInputField: View {
   @Binding public var selection: [PhotosPickerItem]
 
   @Environment(\.submitHandler) var submitHandler
+  var submitNamingHandler: (() -> Void)?
 
   @State private var selectedImage: Image?
 
@@ -57,10 +58,18 @@ public struct MultimodalInputField: View {
     }
   }
 
+  private func submitNaming() {
+    if let submitNamingHandler {
+      submitNamingHandler()
+    }
+  }
+
   public init(text: Binding<String>,
-              selection: Binding<[PhotosPickerItem]>) {
+              selection: Binding<[PhotosPickerItem]>,
+              submitNamingHandler: @escaping () -> Void) {
     _text = text
     _selection = selection
+    self.submitNamingHandler = submitNamingHandler
   }
 
   public var body: some View {
@@ -99,10 +108,15 @@ public struct MultimodalInputField: View {
         }
       }
 
-      Button(action: submit) {
-        Text("開始算命")
+      HStack {
+        Button(action: submit) {
+          Text("開始算命")
+        }
+        Button(action: submitNaming) {
+          Text("開始命名")
+        }
+        .padding(.top, 8)
       }
-      .padding(.top, 8)
     }
     .padding(.horizontal)
     .confirmationDialog(
@@ -140,21 +154,30 @@ public struct MultimodalInputField: View {
     @State private var selectedImage: Image?
 
     var body: some View {
-      MultimodalInputField(text: $userInput, selection: $selectedItems)
-        .onChange(of: selectedItems) { _ in
-          Task {
-            selectedImage = nil
+      MultimodalInputField(
+        text: $userInput,
+        selection: $selectedItems,
+        submitNamingHandler: {
+          print("Submit Naming pressed")
+        }
+      )
+      .onSubmit {
+        print("Submit pressed")
+      }
+      .onChange(of: selectedItems) { _ in
+        Task {
+          selectedImage = nil
 
-            if let item = selectedItems.first {
-              if let data = try? await item.loadTransferable(type: Data.self) {
-                if let uiImage = UIImage(data: data) {
-                  let image = Image(uiImage: uiImage)
-                  selectedImage = image
-                }
+          if let item = selectedItems.first {
+            if let data = try? await item.loadTransferable(type: Data.self) {
+              if let uiImage = UIImage(data: data) {
+                let image = Image(uiImage: uiImage)
+                selectedImage = image
               }
             }
           }
         }
+      }
 
       if let selectedImage {
         selectedImage

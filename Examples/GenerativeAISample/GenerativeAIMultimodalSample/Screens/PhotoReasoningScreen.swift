@@ -29,7 +29,11 @@ struct PhotoReasoningScreen: View {
 
   var body: some View {
     VStack {
-      MultimodalInputField(text: $viewModel.userInput, selection: $viewModel.selectedItems)
+      MultimodalInputField(
+            text: $viewModel.userInput,
+            selection: $viewModel.selectedItems,
+            submitNamingHandler: onNameTapped
+        )
         .focused($focusedField, equals: .message)
         .onSubmit {
           onSendTapped()
@@ -67,6 +71,14 @@ struct PhotoReasoningScreen: View {
 
     Task {
       await viewModel.reason()
+    }
+  }
+
+  private func onNameTapped() {
+    focusedField = nil
+      
+    Task {
+        await viewModel.name()
     }
   }
 }
