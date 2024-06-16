@@ -74,6 +74,15 @@ public struct MultimodalInputField: View {
 
   public var body: some View {
     VStack(alignment: .leading) {
+      if let selectedImage {
+        selectedImage
+          .resizable()
+          .scaledToFit() // 使用scaledToFit确保图片按比例缩放
+          .frame(width: 150, height: 150) // 增大显示大小
+          .cornerRadius(8)
+          .padding(.bottom, 8) // 添加底部填充
+          .frame(maxWidth: .infinity, alignment: .center) // 水平置中
+      }
       HStack(alignment: .top) {
         Button(action: showChooseAttachmentTypePicker) {
           Image(systemName: "plus")
@@ -88,14 +97,6 @@ public struct MultimodalInputField: View {
           )
           .padding(.vertical, 4)
           .onSubmit(submit)
-
-          if let selectedImage {
-            selectedImage
-              .resizable()
-              .scaledToFit() // 使用scaledToFit确保图片按比例缩放
-              .frame(width: 150, height: 150) // 增大显示大小
-              .cornerRadius(8)
-          }
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 4)
