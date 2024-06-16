@@ -110,11 +110,25 @@ public struct MultimodalInputField: View {
 
       HStack {
         Button(action: submit) {
-          Text("開始算命")
+          Text("占卜測算")
+            .frame(height: 30)
         }
+        .padding(.horizontal, 12)
+        .overlay(
+          RoundedRectangle(cornerRadius: 8)
+            .stroke(Color.blue, lineWidth: 2)
+        )
+        .padding(.top, 8)
+
         Button(action: submitNaming) {
-          Text("開始命名")
+          Text("改名易姓")
+            .frame(height: 30)
         }
+        .padding(.horizontal, 12)
+        .overlay(
+          RoundedRectangle(cornerRadius: 8)
+            .stroke(Color.blue, lineWidth: 2)
+        )
         .padding(.top, 8)
       }
     }
