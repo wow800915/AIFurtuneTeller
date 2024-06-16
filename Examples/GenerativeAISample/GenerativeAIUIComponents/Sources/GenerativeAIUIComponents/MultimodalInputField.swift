@@ -90,13 +90,9 @@ public struct MultimodalInputField: View {
         .padding(.top, 10)
 
         VStack(alignment: .leading) {
-          TextField(
-            "請選擇相片",
-            text: $text,
-            axis: .vertical
-          )
-          .padding(.vertical, 4)
-          .onSubmit(submit)
+          Text("請新增照片")
+            .padding(.vertical, 4)
+            .frame(maxWidth: .infinity, alignment: .leading) // 水平填滿畫面
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 4)
@@ -112,6 +108,7 @@ public struct MultimodalInputField: View {
       HStack {
         Button(action: submit) {
           Text("占卜測算")
+            .frame(maxWidth: .infinity, alignment: .leading) // 向左靠齊
             .frame(height: 30)
         }
         .padding(.horizontal, 12)
@@ -123,6 +120,7 @@ public struct MultimodalInputField: View {
 
         Button(action: submitNaming) {
           Text("改名易姓")
+            .frame(maxWidth: .infinity, alignment: .leading) // 向左靠齊
             .frame(height: 30)
         }
         .padding(.horizontal, 12)
