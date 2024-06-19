@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D9C55D32C21A6C500FBA4C6 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D9C55D22C21A6C500FBA4C6 /* info.plist */; };
 		86FBBA072BBE0D49006031A1 /* FunctionCallingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBBA052BBE0D49006031A1 /* FunctionCallingScreen.swift */; };
 		86FBBA272BBF0594006031A1 /* FunctionCallingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBBA252BBF0594006031A1 /* FunctionCallingViewModel.swift */; };
 		880266762B0FC39000CF7CB6 /* PhotoReasoningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8802666F2B0FC39000CF7CB6 /* PhotoReasoningViewModel.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D9C55D22C21A6C500FBA4C6 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		86FBBA052BBE0D49006031A1 /* FunctionCallingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionCallingScreen.swift; sourceTree = "<group>"; };
 		86FBBA252BBF0594006031A1 /* FunctionCallingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionCallingViewModel.swift; sourceTree = "<group>"; };
 		8802666F2B0FC39000CF7CB6 /* PhotoReasoningViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoReasoningViewModel.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				8848C8582B0D056C007B434F /* GenerativeAIMultimodalSampleApp.swift */,
 				8848C85C2B0D056D007B434F /* Assets.xcassets */,
 				8848C85E2B0D056D007B434F /* Preview Content */,
+				2D9C55D22C21A6C500FBA4C6 /* info.plist */,
 			);
 			path = GenerativeAIMultimodalSample;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D9C55D32C21A6C500FBA4C6 /* info.plist in Resources */,
 				8848C8602B0D056D007B434F /* Preview Assets.xcassets in Resources */,
 				8848C85D2B0D056D007B434F /* Assets.xcassets in Resources */,
 				88209C172B0F92AF00F64795 /* GenerativeAI-Info.plist in Resources */,
@@ -939,6 +943,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GenerativeAIMultimodalSample/info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -970,6 +975,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GenerativeAIMultimodalSample/info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

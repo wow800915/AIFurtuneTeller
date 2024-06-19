@@ -14,6 +14,8 @@
 
 import PhotosUI
 import SwiftUI
+import UIKit
+import AVFoundation
 
 struct MultimodalInputFieldSubmitHandler: EnvironmentKey {
   static var defaultValue: (() -> Void)?
@@ -43,6 +45,9 @@ public struct MultimodalInputField: View {
 
   @State private var isChooseAttachmentTypePickerShowing = false
   @State private var isAttachmentPickerShowing = false
+  @State private var isCameraPickerShowing = false
+  @State private var isAlertPresented = false
+  @State private var alertMessage = ""
 
   private func showChooseAttachmentTypePicker() {
     isChooseAttachmentTypePickerShowing.toggle()
@@ -50,6 +55,34 @@ public struct MultimodalInputField: View {
 
   private func showAttachmentPicker() {
     isAttachmentPickerShowing.toggle()
+  }
+
+  private func checkCameraPermission() {
+    let status = AVCaptureDevice.authorizationStatus(for: .video)
+    switch status {
+    case .authorized:
+      showCameraPicker()
+    case .notDetermined:
+      AVCaptureDevice.requestAccess(for: .video) { granted in
+        DispatchQueue.main.async {
+          if granted {
+            showCameraPicker()
+          } else {
+            alertMessage = "Camera access is required to take photos."
+            isAlertPresented = true
+          }
+        }
+      }
+    case .denied, .restricted:
+      alertMessage = "Camera access is denied or restricted. Please enable it in settings."
+      isAlertPresented = true
+    @unknown default:
+      break
+    }
+  }
+
+  private func showCameraPicker() {
+    isCameraPickerShowing.toggle()
   }
 
   private func submit() {
@@ -140,8 +173,14 @@ public struct MultimodalInputField: View {
       Button(action: showAttachmentPicker) {
         Text("Photo & Video Library")
       }
+      Button(action: checkCameraPermission) {
+        Text("Camera")
+      }
     }
     .photosPicker(isPresented: $isAttachmentPickerShowing, selection: $selection, maxSelectionCount: 1)
+    .sheet(isPresented: $isCameraPickerShowing) {
+      ImagePicker(selectedImage: $selectedImage)
+    } // fullscreen 可能加在這
     .onChange(of: selection) { _ in
       Task {
         selectedImage = nil
@@ -155,6 +194,45 @@ public struct MultimodalInputField: View {
           }
         }
       }
+    }
+    .alert(isPresented: $isAlertPresented) {
+      Alert(title: Text("Camera Permission"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+    }
+  }
+}
+
+struct ImagePicker: UIViewControllerRepresentable {
+  @Binding var selectedImage: Image?
+
+  func makeUIViewController(context: Context) -> UIImagePickerController {
+    let picker = UIImagePickerController()
+    picker.delegate = context.coordinator
+    picker.sourceType = .camera
+    return picker
+  }
+
+  func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+
+  func makeCoordinator() -> Coordinator {
+    Coordinator(self)
+  }
+
+  class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    let parent: ImagePicker
+
+    init(_ parent: ImagePicker) {
+      self.parent = parent
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+      if let uiImage = info[.originalImage] as? UIImage {
+        parent.selectedImage = Image(uiImage: uiImage)
+      }
+      picker.dismiss(animated: true)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+      picker.dismiss(animated: true)
     }
   }
 }
