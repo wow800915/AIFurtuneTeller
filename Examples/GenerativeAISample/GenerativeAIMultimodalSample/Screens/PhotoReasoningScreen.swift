@@ -58,7 +58,7 @@ struct PhotoReasoningScreen: View {
         .listStyle(.plain)
       }
     }
-    .navigationTitle("威佑算命")
+    .navigationTitle("陳老師AI算命")
     .onAppear {
       focusedField = .message
     }
