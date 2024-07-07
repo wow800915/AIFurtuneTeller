@@ -178,9 +178,9 @@ public struct MultimodalInputField: View {
       }
     }
     .photosPicker(isPresented: $isAttachmentPickerShowing, selection: $selection, maxSelectionCount: 1)
-    .sheet(isPresented: $isCameraPickerShowing) {
+    .fullScreenCover(isPresented: $isCameraPickerShowing) {
       ImagePicker(selectedImage: $selectedImage)
-    } // fullscreen 可能加在這
+    }
     .onChange(of: selection) { _ in
       Task {
         selectedImage = nil
@@ -208,6 +208,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     let picker = UIImagePickerController()
     picker.delegate = context.coordinator
     picker.sourceType = .camera
+    picker.modalPresentationStyle = .fullScreen // Ensure fullscreen presentation
     return picker
   }
 
