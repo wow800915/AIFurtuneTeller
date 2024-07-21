@@ -153,7 +153,7 @@ public struct MultimodalInputField: View {
             .frame(maxWidth: .infinity, alignment: .leading) // 向左靠齊
             .frame(height: 30)
         }
-        .padding(.horizontal, 12)
+        .padding(.horizontal, 4)
         .overlay(
           RoundedRectangle(cornerRadius: 8)
             .stroke(Color.blue, lineWidth: 2)
@@ -165,7 +165,7 @@ public struct MultimodalInputField: View {
             .frame(maxWidth: .infinity, alignment: .leading) // 向左靠齊
             .frame(height: 30)
         }
-        .padding(.horizontal, 12)
+        .padding(.horizontal, 4)
         .overlay(
           RoundedRectangle(cornerRadius: 8)
             .stroke(Color.blue, lineWidth: 2)
@@ -177,7 +177,7 @@ public struct MultimodalInputField: View {
             .frame(maxWidth: .infinity, alignment: .leading) // 向左靠齊
             .frame(height: 30)
         }
-        .padding(.horizontal, 12)
+        .padding(.horizontal, 4)
         .overlay(
           RoundedRectangle(cornerRadius: 8)
             .stroke(Color.blue, lineWidth: 2)
