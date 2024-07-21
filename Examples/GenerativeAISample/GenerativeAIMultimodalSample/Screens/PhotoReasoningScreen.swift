@@ -32,7 +32,8 @@ struct PhotoReasoningScreen: View {
       MultimodalInputField(
             text: $viewModel.userInput,
             selection: $viewModel.selectedItems,
-            submitNamingHandler: onNameTapped
+            submitNamingHandler: onNameTapped,
+            submitPastLifeHandler: onPastLifeTapped
         )
         .focused($focusedField, equals: .message)
         .onSubmit {
@@ -79,6 +80,14 @@ struct PhotoReasoningScreen: View {
       
     Task {
         await viewModel.name()
+    }
+  }
+    
+  private func onPastLifeTapped() {
+    focusedField = nil
+        
+    Task {
+        await viewModel.pastLife()
     }
   }
 }

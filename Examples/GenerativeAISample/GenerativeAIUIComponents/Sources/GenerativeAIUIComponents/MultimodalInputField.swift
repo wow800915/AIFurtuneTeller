@@ -40,6 +40,7 @@ public struct MultimodalInputField: View {
 
   @Environment(\.submitHandler) var submitHandler
   var submitNamingHandler: (() -> Void)?
+  var submitPastLifeHandler: (() -> Void)?
 
   @State private var selectedImage: Image?
 
@@ -90,6 +91,12 @@ public struct MultimodalInputField: View {
       submitHandler()
     }
   }
+    
+  private func submitPastLife() {
+    if let submitPastLifeHandler {
+        submitPastLifeHandler()
+    }
+  }
 
   private func submitNaming() {
     if let submitNamingHandler {
@@ -99,10 +106,12 @@ public struct MultimodalInputField: View {
 
   public init(text: Binding<String>,
               selection: Binding<[PhotosPickerItem]>,
-              submitNamingHandler: @escaping () -> Void) {
+              submitNamingHandler: @escaping () -> Void,
+              submitPastLifeHandler: @escaping () -> Void) {
     _text = text
     _selection = selection
     self.submitNamingHandler = submitNamingHandler
+    self.submitPastLifeHandler = submitPastLifeHandler
   }
 
   public var body: some View {
@@ -141,6 +150,18 @@ public struct MultimodalInputField: View {
       HStack {
         Button(action: submit) {
           Text("占卜測算")
+            .frame(maxWidth: .infinity, alignment: .leading) // 向左靠齊
+            .frame(height: 30)
+        }
+        .padding(.horizontal, 12)
+        .overlay(
+          RoundedRectangle(cornerRadius: 8)
+            .stroke(Color.blue, lineWidth: 2)
+        )
+        .padding(.top, 8)
+          
+        Button(action: submitPastLife) {
+          Text("前世今生")
             .frame(maxWidth: .infinity, alignment: .leading) // 向左靠齊
             .frame(height: 30)
         }
@@ -251,6 +272,9 @@ struct ImagePicker: UIViewControllerRepresentable {
         selection: $selectedItems,
         submitNamingHandler: {
           print("Submit Naming pressed")
+        },
+        submitPastLifeHandler: {
+          print("Submit Past Life pressed")
         }
       )
       .onSubmit {

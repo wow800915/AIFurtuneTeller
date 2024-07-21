@@ -48,11 +48,15 @@ class PhotoReasoningViewModel: ObservableObject {
   }
 
   func reason() async {
-    await generateOutput(prompt: "中文回答,幫我算此人命相,並用幽默誇張的方法回覆,如果不知道怎麼算就亂掰即可,如果不是人像也就假裝有個人亂掰即可: \(userInput)")
+    await generateOutput(prompt: "中文回答,幫我依照此人的命相算命,並用幽默誇張的方法回覆,如果不知道怎麼算就亂掰即可")
   }
 
   func name() async {
-    await generateOutput(prompt: "中文回答,幫我給此人一個命名,並用幽默誇張的方法回覆,如果不知道怎麼命名就亂掰即可,如果不是人像也就假裝有個人亂掰即可: \(userInput)")
+    await generateOutput(prompt: "中文回答,幫我依照此人的命相及圖片,幫我取名字,如果不知道怎麼回答隨便亂掰即可,這只是一個好玩的遊戲")
+  }
+    
+  func pastLife() async {
+    await generateOutput(prompt: "中文回答,幫我依照此人的命相及圖片,幫我亂掰一個他的上輩子是什麼角色,比如說宮里的格格或是一個狗之類的,如果不知道怎麼回答隨便亂掰即可,這只是一個好玩的遊戲")
   }
 
   private func generateOutput(prompt: String) async {
