@@ -200,7 +200,8 @@ public struct MultimodalInputField: View {
     }
     .photosPicker(isPresented: $isAttachmentPickerShowing, selection: $selection, maxSelectionCount: 1)
     .fullScreenCover(isPresented: $isCameraPickerShowing) {
-      ImagePicker(selectedImage: $selectedImage)
+        ImagePicker(selectedImage: $selectedImage)
+                        .edgesIgnoringSafeArea(.all) // 确保全屏
     }
     .onChange(of: selection) { _ in
       Task {
