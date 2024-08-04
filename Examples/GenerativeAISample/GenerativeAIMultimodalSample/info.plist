@@ -4,7 +4,5 @@
 <dict>
 	<key>New item</key>
 	<string></string>
-	<key>NSCameraUsageDescription</key>
-	<string>我们需要访问您的相机以拍摄照片。</string>
 </dict>
 </plist>
