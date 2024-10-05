@@ -37,6 +37,8 @@ public extension View {
 public struct MultimodalInputField: View {
   @Binding public var text: String
   @Binding public var selection: [PhotosPickerItem]
+    
+  var onImagesSelected: ([UIImage]) -> Void  // 閉包來傳遞圖片
 
   @Environment(\.submitHandler) var submitHandler
   var submitNamingHandler: (() -> Void)?
@@ -106,10 +108,12 @@ public struct MultimodalInputField: View {
 
   public init(text: Binding<String>,
               selection: Binding<[PhotosPickerItem]>,
+              onImagesSelected: @escaping ([UIImage]) -> Void,
               submitNamingHandler: @escaping () -> Void,
               submitPastLifeHandler: @escaping () -> Void) {
     _text = text
     _selection = selection
+    self.onImagesSelected = onImagesSelected
     self.submitNamingHandler = submitNamingHandler
     self.submitPastLifeHandler = submitPastLifeHandler
   }
@@ -200,7 +204,9 @@ public struct MultimodalInputField: View {
     }
     .photosPicker(isPresented: $isAttachmentPickerShowing, selection: $selection, maxSelectionCount: 1)
     .fullScreenCover(isPresented: $isCameraPickerShowing) {
-        ImagePicker(selectedImage: $selectedImage)
+        ImagePicker(selectedImage: $selectedImage){ image in
+            onImagesSelected([image])
+        }
                         .edgesIgnoringSafeArea(.all) // 确保全屏
     }
     .onChange(of: selection) { _ in
@@ -225,6 +231,7 @@ public struct MultimodalInputField: View {
 
 struct ImagePicker: UIViewControllerRepresentable {
   @Binding var selectedImage: Image?
+  var onImagePicked: (UIImage) -> Void  // 使用閉包來回傳圖片
 
   func makeUIViewController(context: Context) -> UIImagePickerController {
     let picker = UIImagePickerController()
@@ -249,7 +256,8 @@ struct ImagePicker: UIViewControllerRepresentable {
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
       if let uiImage = info[.originalImage] as? UIImage {
-        parent.selectedImage = Image(uiImage: uiImage)
+        parent.selectedImage = Image(uiImage: uiImage)//位置A
+        parent.onImagePicked(uiImage)  // 將圖片回傳到閉包
       }
       picker.dismiss(animated: true)
     }
@@ -271,6 +279,8 @@ struct ImagePicker: UIViewControllerRepresentable {
       MultimodalInputField(
         text: $userInput,
         selection: $selectedItems,
+        onImagesSelected: { images in
+        },
         submitNamingHandler: {
           print("Submit Naming pressed")
         },

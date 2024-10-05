@@ -32,6 +32,9 @@ struct PhotoReasoningScreen: View {
       MultimodalInputField(
             text: $viewModel.userInput,
             selection: $viewModel.selectedItems,
+            onImagesSelected: { images in
+                    viewModel.imageUI = images  // 傳遞圖片給 ViewModel
+                  },
             submitNamingHandler: onNameTapped,
             submitPastLifeHandler: onPastLifeTapped
         )

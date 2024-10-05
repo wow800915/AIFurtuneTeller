@@ -29,8 +29,15 @@ class PhotoReasoningViewModel: ObservableObject {
   @Published
   var userInput: String = ""
 
-  @Published
-  var selectedItems = [PhotosPickerItem]()
+  @Published var selectedItems = [PhotosPickerItem]() {
+    didSet {
+        Task {
+            await loadImages()
+        }
+    }
+  }
+
+  @Published var imageUI: [UIImage] = []
 
   @Published
   var outputText: String? = nil
@@ -45,6 +52,19 @@ class PhotoReasoningViewModel: ObservableObject {
 
   init() {
     model = GenerativeModel(name: "gemini-1.5-flash-latest", apiKey: APIKey.default)
+  }
+    
+  func loadImages() async {
+    var uiImages = [UIImage]()
+    for item in selectedItems {
+        if let data = try? await item.loadTransferable(type: Data.self),
+            let image = UIImage(data: data) {
+            uiImages.append(image)
+        } else {
+            logger.error("Failed to load image from selected item.")
+        }
+    }
+    imageUI = uiImages
   }
 
   func reason() async {
@@ -73,26 +93,18 @@ class PhotoReasoningViewModel: ObservableObject {
       outputText = ""
 
       var images = [any ThrowingPartsRepresentable]()
-      for item in selectedItems {
-        if let data = try? await item.loadTransferable(type: Data.self) {
-          guard let image = UIImage(data: data) else {
-            logger.error("Failed to parse data as an image, skipping.")
-            continue
-          }
-          if image.size.fits(largestDimension: PhotoReasoningViewModel.largestImageDimension) {
-            images.append(image)
-          } else {
-            guard let resizedImage = image
-              .preparingThumbnail(of: image.size
-                .aspectFit(largestDimension: PhotoReasoningViewModel.largestImageDimension)) else {
-              logger.error("Failed to resize image: \(image)")
-              continue
+        for image in imageUI {
+            let processedImage: UIImage
+            if image.size.fits(largestDimension: PhotoReasoningViewModel.largestImageDimension) {
+                processedImage = image
+            } else if let resizedImage = image.preparingThumbnail(of: image.size.aspectFit(largestDimension: PhotoReasoningViewModel.largestImageDimension)) {
+                processedImage = resizedImage
+            } else {
+                logger.error("Failed to resize image: \(image)")
+                continue
             }
-
-            images.append(resizedImage)
-          }
+            images.append(processedImage)
         }
-      }
 
       let outputContentStream = model.generateContentStream(prompt, images)
 
