@@ -16,11 +16,11 @@ import SwiftUI
 
 @main
 struct GenerativeAIMultimodalSampleApp: App {
-  var body: some Scene {
-    WindowGroup {
-      NavigationStack {
-        PhotoReasoningScreen()
-      }
+    var body: some Scene {
+        WindowGroup {
+            NavigationStack {
+                PhotoReasoningScreen()
+            }
+        }
     }
-  }
 }

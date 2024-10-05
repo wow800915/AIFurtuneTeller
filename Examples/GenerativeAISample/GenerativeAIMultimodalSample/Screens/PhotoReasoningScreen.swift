@@ -18,85 +18,85 @@ import PhotosUI
 import SwiftUI
 
 struct PhotoReasoningScreen: View {
-  @StateObject var viewModel = PhotoReasoningViewModel()
-
-  enum FocusedField: Hashable {
-    case message
-  }
-
-  @FocusState
-  var focusedField: FocusedField?
-
-  var body: some View {
-    VStack {
-      MultimodalInputField(
-            text: $viewModel.userInput,
-            selection: $viewModel.selectedItems,
-            onImagesSelected: { images in
-                    viewModel.imageUI = images  // 傳遞圖片給 ViewModel
-                  },
-            submitNamingHandler: onNameTapped,
-            submitPastLifeHandler: onPastLifeTapped
-        )
-        .focused($focusedField, equals: .message)
-        .onSubmit {
-          onSendTapped()
-        }
-
-      ScrollViewReader { scrollViewProxy in
-        List {
-          if let outputText = viewModel.outputText {
-            HStack(alignment: .top) {
-              if viewModel.inProgress {
-                ProgressView()
-              } else {
-                Image(systemName: "cloud.circle.fill")
-                  .font(.title2)
-              }
-
-              Markdown("\(outputText)")
-            }
-            .listRowSeparator(.hidden)
-          }
-        }
-        .listStyle(.plain)
-      }
-    }
-    .navigationTitle("陳老師AI算命")
-    .onAppear {
-      focusedField = .message
-    }
-  }
-
-  // MARK: - Actions
-
-  private func onSendTapped() {
-    focusedField = nil
-
-    Task {
-      await viewModel.reason()
-    }
-  }
-
-  private func onNameTapped() {
-    focusedField = nil
-      
-    Task {
-        await viewModel.name()
-    }
-  }
+    @StateObject var viewModel = PhotoReasoningViewModel()
     
-  private func onPastLifeTapped() {
-    focusedField = nil
-        
-    Task {
-        await viewModel.pastLife()
+    enum FocusedField: Hashable {
+        case message
     }
-  }
+    
+    @FocusState
+    var focusedField: FocusedField?
+    
+    var body: some View {
+        VStack {
+            MultimodalInputField(
+                text: $viewModel.userInput,
+                selection: $viewModel.selectedItems,
+                onImagesSelected: { images in
+                    viewModel.imageUI = images  // 傳遞圖片給 ViewModel
+                },
+                submitNamingHandler: onNameTapped,
+                submitPastLifeHandler: onPastLifeTapped
+            )
+            .focused($focusedField, equals: .message)
+            .onSubmit {
+                onSendTapped()
+            }
+            
+            ScrollViewReader { scrollViewProxy in
+                List {
+                    if let outputText = viewModel.outputText {
+                        HStack(alignment: .top) {
+                            if viewModel.inProgress {
+                                ProgressView()
+                            } else {
+                                Image(systemName: "cloud.circle.fill")
+                                    .font(.title2)
+                            }
+                            
+                            Markdown("\(outputText)")
+                        }
+                        .listRowSeparator(.hidden)
+                    }
+                }
+                .listStyle(.plain)
+            }
+        }
+        .navigationTitle("陳老師AI算命")
+        .onAppear {
+            focusedField = .message
+        }
+    }
+    
+    // MARK: - Actions
+    
+    private func onSendTapped() {
+        focusedField = nil
+        
+        Task {
+            await viewModel.reason()
+        }
+    }
+    
+    private func onNameTapped() {
+        focusedField = nil
+        
+        Task {
+            await viewModel.name()
+        }
+    }
+    
+    private func onPastLifeTapped() {
+        focusedField = nil
+        
+        Task {
+            await viewModel.pastLife()
+        }
+    }
 }
 
 #Preview {
-  NavigationStack {
-    PhotoReasoningScreen()
-  }
+    NavigationStack {
+        PhotoReasoningScreen()
+    }
 }
