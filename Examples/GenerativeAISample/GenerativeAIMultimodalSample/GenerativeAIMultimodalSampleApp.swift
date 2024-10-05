@@ -16,11 +16,62 @@ import SwiftUI
 
 @main
 struct GenerativeAIMultimodalSampleApp: App {
+    @State private var showPageSelectionDialog = false
+    @State private var currentScreen = "PhotoReasoningScreen"  // 用 String 代替 Boolean 控制页面状态
+    
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                PhotoReasoningScreen()
+                VStack {
+                    HStack {
+                        Text("陳老師AI算命")
+                            .font(.largeTitle)
+                            .padding(.leading)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            showPageSelectionDialog.toggle()
+                        }) {
+                            Image(systemName: "ellipsis.circle")
+                        }
+                        .padding(.trailing)
+                    }
+                    .frame(height: 44)
+                    .padding(.top)
+                    
+                    Spacer()
+                    
+                    // 根据 currentScreen 的值来决定显示哪个视图
+                    if currentScreen == "SingingBowlScreen" {
+                        SingingBowlScreen()
+                    } else {
+                        PhotoReasoningScreen()
+                    }
+                }
+                .sheet(isPresented: $showPageSelectionDialog) {
+                    PageSelectionDialog(currentScreen: $currentScreen)
+                }
             }
         }
+    }
+}
+
+struct PageSelectionDialog: View {
+    @Binding var currentScreen: String  // 通过 Binding 修改父视图的 String 状态
+    
+    var body: some View {
+        NavigationStack {
+            List {
+                Button("前往PhotoReasoningScreen") {
+                    currentScreen = "PhotoReasoningScreen"  // 切换回 PhotoReasoningScreen
+                }
+                Button("前往SingingBowlScreen") {
+                    currentScreen = "SingingBowlScreen"  // 切换到 SingingBowlScreen
+                }
+            }
+            .navigationTitle("選擇頁面")
+        }
+        .presentationDetents([.fraction(0.2)])  // 將高度設為整個屏幕的 20%
     }
 }
