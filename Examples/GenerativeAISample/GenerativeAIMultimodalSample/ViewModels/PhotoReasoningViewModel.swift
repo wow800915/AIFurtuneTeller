@@ -68,7 +68,7 @@ class PhotoReasoningViewModel: ObservableObject {
   }
 
   func reason() async {
-    await generateOutput(prompt: "中文回答,幫我依照照片給照片裡面的人適合的的誇張的人生故事及性格,可以依照他的長相或是身材或是環境來回答")
+    await generateOutput(prompt: "中文回答,幫我算此人命相,並用幽默誇張的方法回覆,如果不知道怎麼算就亂掰即可,如果不是人像也就假裝有個人亂掰即可,但回答的時候不要透露出,問題有打亂掰跟把幽默誇張")
   }
 
   func name() async {
