@@ -13,7 +13,6 @@
 // limitations under the License.
 
 import GenerativeAIUIComponents
-import MarkdownUI
 import PhotosUI
 import SwiftUI
 
@@ -54,7 +53,9 @@ struct PhotoReasoningScreen: View {
                                     .font(.title2)
                             }
                             
-                            Markdown("\(outputText)")
+                            Text(outputText)
+                                .font(.body)
+                                .multilineTextAlignment(.leading)
                         }
                         .listRowSeparator(.hidden)
                     }

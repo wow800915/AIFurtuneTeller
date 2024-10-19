@@ -49,7 +49,6 @@
 		886F95E12B17D5010036F07A /* ConversationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E10F542B1112CA00C08E95 /* ConversationScreen.swift */; };
 		886F95E32B17D6630036F07A /* GenerativeAIUIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 886F95E22B17D6630036F07A /* GenerativeAIUIComponents */; };
 		889873852B208563005B4896 /* ErrorDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889873842B208563005B4896 /* ErrorDetailsView.swift */; };
-		88B8A91E2B0FC55100424728 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 88B8A91D2B0FC55100424728 /* MarkdownUI */; };
 		88B8A9372B0FCBE700424728 /* GenerativeAIUIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 88B8A9362B0FCBE700424728 /* GenerativeAIUIComponents */; };
 		88D9474D2B14F27E008B5580 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 88D9474C2B14F27E008B5580 /* MarkdownUI */; };
 		88E10F452B110D5300C08E95 /* ChatSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E10F442B110D5300C08E95 /* ChatSampleApp.swift */; };
@@ -68,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		2D92CE602CB12DDD00ECE45B /* SingingBowlScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingingBowlScreen.swift; sourceTree = "<group>"; };
+		2D9422BE2CC39F0C0019335A /* swift-markdown-ui */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "swift-markdown-ui"; path = "/Users/wei-you_chen/Library/Developer/Xcode/DerivedData/GenerativeAISample-dwerdspgvlmxidadasgjmqtsgvhk/SourcePackages/checkouts/swift-markdown-ui"; sourceTree = "<absolute>"; };
 		86FBBA052BBE0D49006031A1 /* FunctionCallingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionCallingScreen.swift; sourceTree = "<group>"; };
 		86FBBA252BBF0594006031A1 /* FunctionCallingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionCallingViewModel.swift; sourceTree = "<group>"; };
 		8802666F2B0FC39000CF7CB6 /* PhotoReasoningViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoReasoningViewModel.swift; sourceTree = "<group>"; };
@@ -128,7 +128,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				88209C292B0FBFA200F64795 /* GoogleGenerativeAI in Frameworks */,
-				88B8A91E2B0FC55100424728 /* MarkdownUI in Frameworks */,
 				88B8A9372B0FCBE700424728 /* GenerativeAIUIComponents in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,6 +206,7 @@
 		88209C222B0FBE1700F64795 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2D9422BE2CC39F0C0019335A /* swift-markdown-ui */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -426,7 +426,6 @@
 			name = GenerativeAIMultimodalSample;
 			packageProductDependencies = (
 				88209C282B0FBFA200F64795 /* GoogleGenerativeAI */,
-				88B8A91D2B0FC55100424728 /* MarkdownUI */,
 				88B8A9362B0FCBE700424728 /* GenerativeAIUIComponents */,
 			);
 			productName = GenerativeAIMultimodalSample;
@@ -817,7 +816,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GenerativeAISample/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = X5MB3G6J5L;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -847,7 +846,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GenerativeAISample/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = X5MB3G6J5L;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1168,11 +1167,6 @@
 		886F95E22B17D6630036F07A /* GenerativeAIUIComponents */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GenerativeAIUIComponents;
-		};
-		88B8A91D2B0FC55100424728 /* MarkdownUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 88209C212B0FBDF700F64795 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
-			productName = MarkdownUI;
 		};
 		88B8A9362B0FCBE700424728 /* GenerativeAIUIComponents */ = {
 			isa = XCSwiftPackageProductDependency;
