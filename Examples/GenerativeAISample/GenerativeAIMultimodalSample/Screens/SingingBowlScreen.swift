@@ -12,15 +12,31 @@ struct SingingBowlScreen: View {
     @State private var audioPlayer: AVAudioPlayer?
     @State private var isPlaying = false
     @State private var screenMessage = "安神寧念"
+    @State private var playbackProgress: Double = 0.0
+    @State private var timer: Timer?
 
     var body: some View {
         VStack {
             Spacer()
             
+            // 音樂標題
             Text(screenMessage)
-                            .font(.largeTitle)
+                .font(.largeTitle)
+                .padding(.bottom, 30)
             
-            Spacer()
+            // 假設的音樂封面
+            Image(systemName: "music.note")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 150, height: 150)
+                .foregroundColor(.gray)
+                .padding(.bottom, 30)
+            
+            // 播放進度條（僅顯示進度，不控制播放）
+            Slider(value: $playbackProgress, in: 0...1)
+                .accentColor(.blue)
+                .padding(.horizontal, 30)
+                .disabled(true)  // 禁止用戶操作，僅作為顯示
             
             HStack(spacing: 20) {
                 Button(action: {
@@ -31,35 +47,46 @@ struct SingingBowlScreen: View {
                     }
                 }) {
                     Text(isPlaying ? "停止播放" : "開始播放")
-                        .font(.title)
+                        .font(.title2)
                         .padding()
-                        .background(Color.blue)
+                        .frame(width: 150)
+                        .background(isPlaying ? Color.red : Color.green)
                         .foregroundColor(.white)
-                        .cornerRadius(10)
+                        .cornerRadius(20)
                 }
             }
+            .padding(.top, 30)
             
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(UIColor.systemBackground))
         .onAppear {
             setupAudioPlayer()
+        }
+        .onDisappear {
+            timer?.invalidate()  // 停止計時器
         }
     }
     
     private func setupAudioPlayer() {
-            if let path = Bundle.main.path(forResource: "music", ofType: "mp3") {
-                let url = URL(fileURLWithPath: path)
-                do {
-                    audioPlayer = try AVAudioPlayer(contentsOf: url)
-                    audioPlayer?.prepareToPlay()
-                } catch {
-                    screenMessage = "音樂檔案載入失敗"
+        if let path = Bundle.main.path(forResource: "music", ofType: "mp3") {
+            let url = URL(fileURLWithPath: path)
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer?.prepareToPlay()
+                
+                // 設定計時器來更新進度條
+                timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+                    updatePlaybackProgress()
                 }
-            } else {
-                screenMessage = "音樂檔案未找到"
+            } catch {
+                screenMessage = "音樂檔案載入失敗"
             }
+        } else {
+            screenMessage = "音樂檔案未找到"
         }
+    }
     
     private func playMusic() {
         audioPlayer?.play()
@@ -69,5 +96,15 @@ struct SingingBowlScreen: View {
     private func stopMusic() {
         audioPlayer?.stop()
         isPlaying = false
+        playbackProgress = 0.0
+    }
+    
+    private func updatePlaybackProgress() {
+        if let player = audioPlayer, player.isPlaying {
+            playbackProgress = player.currentTime / player.duration
+        } else if !isPlaying {
+            playbackProgress = 0.0
+            timer?.invalidate()  // 停止更新
+        }
     }
 }
