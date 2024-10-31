@@ -16,56 +16,71 @@ struct SingingBowlScreen: View {
     @State private var timer: Timer?
 
     var body: some View {
-        VStack {
-            Spacer()
-            
-            // 音樂標題
-            Text(screenMessage)
-                .font(.largeTitle)
-                .padding(.bottom, 30)
-            
-            // 假設的音樂封面
-            Image(systemName: "music.note")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 150, height: 150)
-                .foregroundColor(.gray)
-                .padding(.bottom, 30)
-            
-            // 播放進度條（僅顯示進度，不控制播放）
-            Slider(value: $playbackProgress, in: 0...1)
-                .accentColor(.blue)
-                .padding(.horizontal, 30)
-                .disabled(true)  // 禁止用戶操作，僅作為顯示
-            
-            HStack(spacing: 20) {
-                Button(action: {
-                    if isPlaying {
-                        stopMusic()
-                    } else {
-                        playMusic()
+        ZStack {
+            VStack {
+                Spacer()
+                
+                // 音樂標題
+                Text(screenMessage)
+                    .font(.largeTitle)
+                    .padding(.bottom, 30)
+                
+                // 假設的音樂封面
+                Image(systemName: "music.note")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 150, height: 150)
+                    .foregroundColor(.gray)
+                    .padding(.bottom, 30)
+                
+                // 播放進度條（僅顯示進度，不控制播放）
+                Slider(value: $playbackProgress, in: 0...1)
+                    .accentColor(.blue)
+                    .padding(.horizontal, 30)
+                    .disabled(true)  // 禁止用戶操作，僅作為顯示
+                
+                HStack(spacing: 20) {
+                    Button(action: {
+                        if isPlaying {
+                            stopMusic()
+                        } else {
+                            playMusic()
+                        }
+                    }) {
+                        Text(isPlaying ? "停止播放" : "開始播放")
+                            .font(.title2)
+                            .padding()
+                            .frame(width: 150)
+                            .background(isPlaying ? Color.red : Color.green)
+                            .foregroundColor(.white)
+                            .cornerRadius(20)
                     }
-                }) {
-                    Text(isPlaying ? "停止播放" : "開始播放")
-                        .font(.title2)
-                        .padding()
-                        .frame(width: 150)
-                        .background(isPlaying ? Color.red : Color.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(20)
+                }
+                .padding(.top, 30)
+                
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(UIColor.systemBackground))
+            .onAppear {
+                setupAudioPlayer()
+            }
+            .onDisappear {
+                timer?.invalidate()  // 停止計時器
+            }
+            
+            // 右下角的小文字
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Text("Music For Meditation: The Rising Sun\nTheFealdoProject")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .padding([.bottom, .trailing], 10)
+                        .multilineTextAlignment(.trailing)
                 }
             }
-            .padding(.top, 30)
-            
-            Spacer()
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(UIColor.systemBackground))
-        .onAppear {
-            setupAudioPlayer()
-        }
-        .onDisappear {
-            timer?.invalidate()  // 停止計時器
         }
     }
     
