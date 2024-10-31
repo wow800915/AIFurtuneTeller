@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D79FDF72CD373DA008F042C /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D79FDF62CD373DA008F042C /* music.mp3 */; };
 		2D92CE612CB12DDD00ECE45B /* SingingBowlScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D92CE602CB12DDD00ECE45B /* SingingBowlScreen.swift */; };
 		86FBBA072BBE0D49006031A1 /* FunctionCallingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBBA052BBE0D49006031A1 /* FunctionCallingScreen.swift */; };
 		86FBBA272BBF0594006031A1 /* FunctionCallingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBBA252BBF0594006031A1 /* FunctionCallingViewModel.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D79FDF62CD373DA008F042C /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		2D92CE602CB12DDD00ECE45B /* SingingBowlScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingingBowlScreen.swift; sourceTree = "<group>"; };
 		2D9422BE2CC39F0C0019335A /* swift-markdown-ui */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "swift-markdown-ui"; path = "/Users/wei-you_chen/Library/Developer/Xcode/DerivedData/GenerativeAISample-dwerdspgvlmxidadasgjmqtsgvhk/SourcePackages/checkouts/swift-markdown-ui"; sourceTree = "<absolute>"; };
 		86FBBA052BBE0D49006031A1 /* FunctionCallingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionCallingScreen.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 		8848C8572B0D056C007B434F /* GenerativeAIMultimodalSample */ = {
 			isa = PBXGroup;
 			children = (
+				2D79FDF62CD373DA008F042C /* music.mp3 */,
 				8802666E2B0FC39000CF7CB6 /* ViewModels */,
 				880266742B0FC39000CF7CB6 /* Screens */,
 				8848C8582B0D056C007B434F /* GenerativeAIMultimodalSampleApp.swift */,
@@ -530,6 +533,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D79FDF72CD373DA008F042C /* music.mp3 in Resources */,
 				8848C8602B0D056D007B434F /* Preview Assets.xcassets in Resources */,
 				8848C85D2B0D056D007B434F /* Assets.xcassets in Resources */,
 				88209C172B0F92AF00F64795 /* GenerativeAI-Info.plist in Resources */,

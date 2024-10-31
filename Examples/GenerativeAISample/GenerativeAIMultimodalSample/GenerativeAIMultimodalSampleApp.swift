@@ -63,10 +63,10 @@ struct PageSelectionDialog: View {
     var body: some View {
         NavigationStack {
             List {
-                Button("前往PhotoReasoningScreen") {
+                Button("陳老師AI算命") {
                     currentScreen = "PhotoReasoningScreen"  // 切换回 PhotoReasoningScreen
                 }
-                Button("前往SingingBowlScreen") {
+                Button("頌缽療癒") {
                     currentScreen = "SingingBowlScreen"  // 切换到 SingingBowlScreen
                 }
             }
