@@ -42,11 +42,13 @@ struct GenerativeAIMultimodalSampleApp: App {
                     
                     Spacer()
                     
-                    // 根据 currentScreen 的值来决定显示哪个视图
+                    // 根據 currentScreen 的值來決定顯示哪個視圖
                     if currentScreen == "SingingBowlScreen" {
                         SingingBowlScreen()
-                    } else {
+                    } else if currentScreen == "PhotoReasoningScreen" {
                         PhotoReasoningScreen()
+                    } else {
+                        WebViewScreen()
                     }
                 }
                 .sheet(isPresented: $showPageSelectionDialog) {
@@ -58,20 +60,27 @@ struct GenerativeAIMultimodalSampleApp: App {
 }
 
 struct PageSelectionDialog: View {
-    @Binding var currentScreen: String  // 通过 Binding 修改父视图的 String 状态
+    @Binding var currentScreen: String  // 通過 Binding 修改父視圖的 String 狀態
+    @Environment(\.dismiss) var dismiss  // 獲取 dismiss 環境變數以控制視窗消失
     
     var body: some View {
         NavigationStack {
             List {
                 Button("陳老師AI算命") {
-                    currentScreen = "PhotoReasoningScreen"  // 切换回 PhotoReasoningScreen
+                    currentScreen = "PhotoReasoningScreen"  // 切換到 PhotoReasoningScreen
+                    dismiss()  // 關閉視窗
                 }
                 Button("頌缽療癒") {
-                    currentScreen = "SingingBowlScreen"  // 切换到 SingingBowlScreen
+                    currentScreen = "SingingBowlScreen"  // 切換到 SingingBowlScreen
+                    dismiss()  // 關閉視窗
+                }
+                Button("其他外部網站") {
+                    currentScreen = "WebViewScreen"  // 切換到 WebViewScreen
+                    dismiss()  // 關閉視窗
                 }
             }
             .navigationTitle("選擇頁面")
         }
-        .presentationDetents([.fraction(0.2)])  // 將高度設為整個屏幕的 20%
+        .presentationDetents([.fraction(0.3)])  // 將高度設為整個屏幕的 30%
     }
 }

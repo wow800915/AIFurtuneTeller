@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2D79FDF72CD373DA008F042C /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2D79FDF62CD373DA008F042C /* music.mp3 */; };
+		2D79FE012CD3B352008F042C /* WebViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FE002CD3B349008F042C /* WebViewScreen.swift */; };
+		2D79FE022CD3B352008F042C /* WebViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FE002CD3B349008F042C /* WebViewScreen.swift */; };
+		2D79FE042CD3B35D008F042C /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FE032CD3B358008F042C /* WebView.swift */; };
 		2D92CE612CB12DDD00ECE45B /* SingingBowlScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D92CE602CB12DDD00ECE45B /* SingingBowlScreen.swift */; };
 		86FBBA072BBE0D49006031A1 /* FunctionCallingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBBA052BBE0D49006031A1 /* FunctionCallingScreen.swift */; };
 		86FBBA272BBF0594006031A1 /* FunctionCallingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FBBA252BBF0594006031A1 /* FunctionCallingViewModel.swift */; };
@@ -68,6 +71,8 @@
 
 /* Begin PBXFileReference section */
 		2D79FDF62CD373DA008F042C /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
+		2D79FE002CD3B349008F042C /* WebViewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewScreen.swift; sourceTree = "<group>"; };
+		2D79FE032CD3B358008F042C /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		2D92CE602CB12DDD00ECE45B /* SingingBowlScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingingBowlScreen.swift; sourceTree = "<group>"; };
 		2D9422BE2CC39F0C0019335A /* swift-markdown-ui */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "swift-markdown-ui"; path = "/Users/wei-you_chen/Library/Developer/Xcode/DerivedData/GenerativeAISample-dwerdspgvlmxidadasgjmqtsgvhk/SourcePackages/checkouts/swift-markdown-ui"; sourceTree = "<absolute>"; };
 		86FBBA052BBE0D49006031A1 /* FunctionCallingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionCallingScreen.swift; sourceTree = "<group>"; };
@@ -183,6 +188,7 @@
 		880266742B0FC39000CF7CB6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2D79FE002CD3B349008F042C /* WebViewScreen.swift */,
 				880266752B0FC39000CF7CB6 /* PhotoReasoningScreen.swift */,
 				2D92CE602CB12DDD00ECE45B /* SingingBowlScreen.swift */,
 			);
@@ -281,6 +287,7 @@
 		8848C8572B0D056C007B434F /* GenerativeAIMultimodalSample */ = {
 			isa = PBXGroup;
 			children = (
+				2D79FE032CD3B358008F042C /* WebView.swift */,
 				2D79FDF62CD373DA008F042C /* music.mp3 */,
 				8802666E2B0FC39000CF7CB6 /* ViewModels */,
 				880266742B0FC39000CF7CB6 /* Screens */,
@@ -636,6 +643,7 @@
 				886F95DE2B17D5010036F07A /* ChatMessage.swift in Sources */,
 				88263BF12B239C11008AB09B /* ErrorDetailsView.swift in Sources */,
 				8848C8352B0D04BC007B434F /* ContentView.swift in Sources */,
+				2D79FE022CD3B352008F042C /* WebViewScreen.swift in Sources */,
 				886F95D52B17BA010036F07A /* SummarizeScreen.swift in Sources */,
 				86FBBA072BBE0D49006031A1 /* FunctionCallingScreen.swift in Sources */,
 				881B753B2B0FDCE600528058 /* APIKey.swift in Sources */,
@@ -669,8 +677,10 @@
 				880266762B0FC39000CF7CB6 /* PhotoReasoningViewModel.swift in Sources */,
 				880266792B0FC39000CF7CB6 /* PhotoReasoningScreen.swift in Sources */,
 				8848C8592B0D056C007B434F /* GenerativeAIMultimodalSampleApp.swift in Sources */,
+				2D79FE012CD3B352008F042C /* WebViewScreen.swift in Sources */,
 				2D92CE612CB12DDD00ECE45B /* SingingBowlScreen.swift in Sources */,
 				881B753A2B0FDCE600528058 /* APIKey.swift in Sources */,
+				2D79FE042CD3B35D008F042C /* WebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
