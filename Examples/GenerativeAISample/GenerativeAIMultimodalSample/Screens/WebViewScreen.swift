@@ -17,6 +17,14 @@ struct WebViewScreen: View {
                 .font(.headline)
                 .padding(.top, 20)
             
+            // 新增提示文字
+            Text("結合傳統命盤與 AI 演算法，提供更全面的運勢解析。")
+                .font(.system(size: 12)) // 使用更小的字體
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 20)
+                .padding(.bottom, 10)
+            
             // 4 個按鈕橫向排列
             HStack(spacing: 15) {
                 Button(action: {

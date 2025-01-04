@@ -136,7 +136,9 @@ public struct MultimodalInputField: View {
                 .padding(.top, 10)
                 
                 VStack(alignment: .leading) {
-                    Text("請新增照片")
+                    Text("請新增照片,我們的 AI 將根據您的照片進行臉部特徵與環境分析，提供個人化的洞察與建議")
+                        .font(.system(size: 14)) // 自定義字體大小
+                        .foregroundColor(.secondary) // 可選：調整字體顏色
                         .padding(.vertical, 4)
                         .frame(maxWidth: .infinity, alignment: .leading) // 水平填滿畫面
                 }

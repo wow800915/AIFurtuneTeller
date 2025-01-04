@@ -33,6 +33,14 @@ struct SingingBowlScreen: View {
                     .foregroundColor(.gray)
                     .padding(.bottom, 30)
                 
+                // 新增提示文字
+                Text("透過專屬音樂引導，放鬆身心並提升正能量。")
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 10)
+                
                 // 播放進度條（僅顯示進度，不控制播放）
                 Slider(value: $playbackProgress, in: 0...1)
                     .accentColor(.blue)

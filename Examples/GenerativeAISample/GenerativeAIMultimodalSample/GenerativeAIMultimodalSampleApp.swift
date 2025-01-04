@@ -66,21 +66,41 @@ struct PageSelectionDialog: View {
     var body: some View {
         NavigationStack {
             List {
-                Button("陳老師AI算命") {
-                    currentScreen = "PhotoReasoningScreen"  // 切換到 PhotoReasoningScreen
-                    dismiss()  // 關閉視窗
+                // 陳老師 AI 算命
+                VStack(alignment: .leading, spacing: 4) {
+                    Button("陳老師AI算命") {
+                        currentScreen = "PhotoReasoningScreen"  // 切換到 PhotoReasoningScreen
+                        dismiss()  // 關閉視窗
+                    }
+                    Text("探索 AI 算命的創新方式，結合心理健康支持工具。")
+                        .font(.system(size: 12))  // 使用更小的字體
+                        .foregroundColor(.secondary)  // 顏色柔和
                 }
-                Button("頌缽療癒") {
-                    currentScreen = "SingingBowlScreen"  // 切換到 SingingBowlScreen
-                    dismiss()  // 關閉視窗
+                
+                // 頌缽療癒
+                VStack(alignment: .leading, spacing: 4) {
+                    Button("頌缽療癒") {
+                        currentScreen = "SingingBowlScreen"  // 切換到 SingingBowlScreen
+                        dismiss()  // 關閉視窗
+                    }
+                    Text("透過聲音振動療法放鬆身心，提升您的正能量與內在平衡。")
+                        .font(.system(size: 12))  // 使用更小的字體
+                        .foregroundColor(.secondary)  // 顏色柔和
                 }
-                Button("其他外部網站") {
-                    currentScreen = "WebViewScreen"  // 切換到 WebViewScreen
-                    dismiss()  // 關閉視窗
+                
+                // 靈性探索
+                VStack(alignment: .leading, spacing: 4) {
+                    Button("靈性探索") {
+                        currentScreen = "WebViewScreen"  // 切換到 WebViewScreen
+                        dismiss()  // 關閉視窗
+                    }
+                    Text("深入靈性與命理的專業知識，了解更多宇宙能量的奧秘。")
+                        .font(.system(size: 12))  // 使用更小的字體
+                        .foregroundColor(.secondary)  // 顏色柔和
                 }
             }
             .navigationTitle("選擇頁面")
         }
-        .presentationDetents([.fraction(0.3)])  // 將高度設為整個屏幕的 30%
+        .presentationDetents([.fraction(0.4)])  // 將高度設為整個屏幕的 30%
     }
 }
