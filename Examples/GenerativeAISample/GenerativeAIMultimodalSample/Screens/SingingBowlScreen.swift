@@ -11,84 +11,89 @@ import AVFoundation
 struct SingingBowlScreen: View {
     @State private var audioPlayer: AVAudioPlayer?
     @State private var isPlaying = false
-    @State private var screenMessage = "安神寧念"
     @State private var playbackProgress: Double = 0.0
     @State private var timer: Timer?
 
     var body: some View {
-        ZStack {
+        VStack {
+            // 標題區域
             VStack {
-                Spacer()
-                
-                // 音樂標題
-                Text(screenMessage)
+                Text("頌缽療癒")
                     .font(.largeTitle)
-                    .padding(.bottom, 30)
+                    .fontWeight(.bold)
+                    .padding(.top, 40)
                 
-                // 假設的音樂封面
-                Image(systemName: "music.note")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 150, height: 150)
-                    .foregroundColor(.gray)
-                    .padding(.bottom, 30)
-                
-                // 新增提示文字
-                Text("透過專屬音樂引導，放鬆身心並提升正能量。")
-                    .font(.footnote)
+                Text("透過聲音療法放鬆心靈，提升正能量與內在平衡")
+                    .font(.body)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 20)
-                    .padding(.bottom, 10)
-                
-                // 播放進度條（僅顯示進度，不控制播放）
+                    .padding(.top, 10)
+            }
+            
+            Spacer()
+            
+            // 音樂播放封面
+            Image("singing_bowl") // 替換為音樂相關的圖片
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200, height: 200)
+                .cornerRadius(20)
+                .shadow(radius: 10)
+                .padding(.bottom, 20)
+            
+            // 播放進度條
+            VStack {
                 Slider(value: $playbackProgress, in: 0...1)
                     .accentColor(.blue)
                     .padding(.horizontal, 30)
-                    .disabled(true)  // 禁止用戶操作，僅作為顯示
+                    .disabled(true)
                 
-                HStack(spacing: 20) {
-                    Button(action: {
-                        if isPlaying {
-                            stopMusic()
-                        } else {
-                            playMusic()
-                        }
-                    }) {
-                        Text(isPlaying ? "停止播放" : "開始播放")
-                            .font(.title2)
-                            .padding()
-                            .frame(width: 150)
-                            .background(isPlaying ? Color.red : Color.green)
-                            .foregroundColor(.white)
-                            .cornerRadius(20)
-                    }
-                }
-                .padding(.top, 30)
-                
-                Spacer()
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(UIColor.systemBackground))
-            .onAppear {
-                setupAudioPlayer()
-            }
-            .onDisappear {
-                timer?.invalidate()  // 停止計時器
+                Text("播放進度：\(Int(playbackProgress * 100))%")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .padding(.top, 5)
             }
             
-            // 右下角的小文字
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    Text("Music For Meditation: The Rising Sun\nTheFealdoProject")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .padding([.bottom, .trailing], 10)
-                        .multilineTextAlignment(.trailing)
+            // 控制按鈕
+            HStack(spacing: 20) {
+                Button(action: {
+                    if isPlaying {
+                        stopMusic()
+                    } else {
+                        playMusic()
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: isPlaying ? "stop.fill" : "play.fill")
+                        Text(isPlaying ? "停止播放" : "開始播放")
+                    }
+                    .font(.headline)
+                    .frame(minWidth: 150, minHeight: 44)
+                    .background(isPlaying ? Color.red : Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
                 }
             }
+            .padding(.top, 20)
+            
+            Spacer()
+            
+            // 底部備註
+            VStack {
+                Text("音樂來源：The Rising Sun - TheFealdoProject")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 10)
+            }
+        }
+        .background(Color(UIColor.systemBackground))
+        .onAppear {
+            setupAudioPlayer()
+        }
+        .onDisappear {
+            timer?.invalidate()
         }
     }
     
@@ -98,36 +103,36 @@ struct SingingBowlScreen: View {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 audioPlayer?.prepareToPlay()
-                
-                // 設定計時器來更新進度條
-                timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
-                    updatePlaybackProgress()
-                }
             } catch {
-                screenMessage = "音樂檔案載入失敗"
+                print("音樂檔案載入失敗")
             }
-        } else {
-            screenMessage = "音樂檔案未找到"
         }
     }
     
     private func playMusic() {
         audioPlayer?.play()
         isPlaying = true
+        
+        // 啟動計時器來更新進度
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            updatePlaybackProgress()
+        }
     }
     
     private func stopMusic() {
         audioPlayer?.stop()
         isPlaying = false
         playbackProgress = 0.0
+        timer?.invalidate()
     }
     
     private func updatePlaybackProgress() {
         if let player = audioPlayer, player.isPlaying {
             playbackProgress = player.currentTime / player.duration
-        } else if !isPlaying {
+        } else {
             playbackProgress = 0.0
-            timer?.invalidate()  // 停止更新
+            timer?.invalidate()
         }
     }
 }
