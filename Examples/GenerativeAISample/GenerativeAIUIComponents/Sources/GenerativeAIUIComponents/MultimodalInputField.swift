@@ -156,7 +156,7 @@ public struct MultimodalInputField: View {
             
             HStack {
                 Button(action: submit) {
-                    Text("AI 洞察")
+                    Text("靈犀妙探")
                         .frame(maxWidth: .infinity, alignment: .center) // 改為置中對齊
                         .frame(height: 40)
                         .font(.body) // 調整字體大小
@@ -170,7 +170,7 @@ public struct MultimodalInputField: View {
                 .padding(.top, 8)
                 
                 Button(action: submitPastLife) {
-                    Text("探索記憶")
+                    Text("前世趣聞")
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: 40)
                         .font(.body)
@@ -184,7 +184,7 @@ public struct MultimodalInputField: View {
                 .padding(.top, 8)
                 
                 Button(action: submitNaming) {
-                    Text("靈韻起名")
+                    Text("妙趣別稱")
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: 40)
                         .font(.body)

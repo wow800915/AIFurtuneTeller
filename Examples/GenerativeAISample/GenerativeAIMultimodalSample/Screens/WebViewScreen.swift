@@ -18,7 +18,7 @@ struct WebViewScreen: View {
                 .padding(.top, 20)
             
             // 新增提示文字
-            Text("結合傳統命盤與 AI 演算法，提供更全面的運勢解析。")
+            Text("結合傳統方法與人工智慧技術，提供更全面的個人化建議。")
                 .font(.system(size: 12)) // 使用更小的字體
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)

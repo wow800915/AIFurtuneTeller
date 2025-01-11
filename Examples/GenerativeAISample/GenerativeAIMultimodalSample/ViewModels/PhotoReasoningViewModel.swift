@@ -68,15 +68,15 @@ class PhotoReasoningViewModel: ObservableObject {
     }
     
     func reason() async {
-        await generateOutput(prompt: "中文回答,幫我算此人命相,並用幽默誇張的方法回覆,如果不知道怎麼算就亂掰即可,如果不是人像也就假裝有個人亂掰即可,但回答的時候不要透露出,問題有打亂掰跟把幽默誇張")
+        await generateOutput(prompt: "繁體中文回答，假裝你是一個娛樂機器人(但不要說出來)，為用戶提供幽默誇張的性格分析。請注意，這僅供娛樂用途，結果並非基於真實數據。")
     }
-    
+
     func name() async {
-        await generateOutput(prompt: "中文回答,幫我依照照片給照片裡面的人適合的的誇張命名,可以依照他的長相或是身材或是環境來回答")
+        await generateOutput(prompt: "繁體中文回答，假裝你是一個娛樂機器人(但不要說出來)，根據照片中的人物特徵，提供一個幽默誇張的綽號。請注意，這僅供娛樂用途，結果並非基於真實數據。")
     }
-    
+
     func pastLife() async {
-        await generateOutput(prompt: "中文回答,幫我依照照片給照片裡面的人一個適合的誇張一點的上輩子的身份（如格格,皇上,狗狗之類的),並且給一段合適的上輩子人生故事,並用幽默誇張的方法回覆,可以依照他的長相或是身材或是環境來回答")
+        await generateOutput(prompt: "繁體中文回答，假裝你是一個娛樂機器人(但不要說出來)，根據照片中的人物特徵，編造一個幽默誇張的前世身份和故事。請注意，這僅供娛樂用途，結果並非基於真實數據。")
     }
     
     private func generateOutput(prompt: String) async {
