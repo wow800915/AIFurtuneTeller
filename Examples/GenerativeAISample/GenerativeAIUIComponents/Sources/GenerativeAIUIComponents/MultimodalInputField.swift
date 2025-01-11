@@ -155,7 +155,7 @@ public struct MultimodalInputField: View {
             
             HStack {
                 Button(action: submit) {
-                    Text("占卜測算")
+                    Text("智能測算")
                         .frame(maxWidth: .infinity, alignment: .leading) // 向左靠齊
                         .frame(height: 30)
                 }
@@ -167,7 +167,7 @@ public struct MultimodalInputField: View {
                 .padding(.top, 8)
                 
                 Button(action: submitPastLife) {
-                    Text("前世今生")
+                    Text("前世印記")
                         .frame(maxWidth: .infinity, alignment: .leading) // 向左靠齊
                         .frame(height: 30)
                 }
@@ -179,7 +179,7 @@ public struct MultimodalInputField: View {
                 .padding(.top, 8)
                 
                 Button(action: submitNaming) {
-                    Text("改名易姓")
+                    Text("靈感命名")
                         .frame(maxWidth: .infinity, alignment: .leading) // 向左靠齊
                         .frame(height: 30)
                 }
@@ -193,15 +193,15 @@ public struct MultimodalInputField: View {
         }
         .padding(.horizontal)
         .confirmationDialog(
-            "Select an image",
+            "選擇上傳方式",
             isPresented: $isChooseAttachmentTypePickerShowing,
             titleVisibility: .hidden
         ) {
             Button(action: showAttachmentPicker) {
-                Text("Photo & Video Library")
+                Text("照片與影片庫")
             }
             Button(action: checkCameraPermission) {
-                Text("Camera")
+                Text("使用相機拍攝")
             }
         }
         .photosPicker(isPresented: $isAttachmentPickerShowing, selection: $selection, maxSelectionCount: 1)

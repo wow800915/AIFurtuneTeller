@@ -13,7 +13,7 @@ struct WebViewScreen: View {
 
     var body: some View {
         VStack {
-            Text("外部命盤系統")
+            Text("其他探索")
                 .font(.headline)
                 .padding(.top, 20)
             

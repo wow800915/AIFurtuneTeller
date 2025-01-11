@@ -24,8 +24,8 @@ struct GenerativeAIMultimodalSampleApp: App {
             NavigationStack {
                 VStack {
                     HStack {
-                        Text("陳老師AI算命")
-                            .font(.largeTitle)
+                        Text("陳老師AI身心靈助手")
+                            .font(.title) // 字體縮小到 "title"
                             .padding(.leading)
                         
                         Spacer()
@@ -66,40 +66,40 @@ struct PageSelectionDialog: View {
     var body: some View {
         NavigationStack {
             List {
-                // 陳老師 AI 算命
+                // 圖像智能分析
                 VStack(alignment: .leading, spacing: 4) {
-                    Button("陳老師AI算命") {
+                    Button("圖像智能分析") {
                         currentScreen = "PhotoReasoningScreen"  // 切換到 PhotoReasoningScreen
                         dismiss()  // 關閉視窗
                     }
-                    Text("探索 AI 算命的創新方式，結合心理健康支持工具。")
+                    Text("上傳照片，通過 AI 技術獲取個性化洞察與生活靈感建議。")
                         .font(.system(size: 12))  // 使用更小的字體
                         .foregroundColor(.secondary)  // 顏色柔和
                 }
                 
-                // 頌缽療癒
+                // 頌缽聲音療法
                 VStack(alignment: .leading, spacing: 4) {
-                    Button("頌缽療癒") {
+                    Button("頌缽之音") { // 名稱簡化，突出聲音療法
                         currentScreen = "SingingBowlScreen"  // 切換到 SingingBowlScreen
                         dismiss()  // 關閉視窗
                     }
-                    Text("透過聲音振動療法放鬆身心，提升您的正能量與內在平衡。")
+                    Text("利用聲音共振幫助身心放鬆，釋放壓力，體驗內在平衡與能量提升。")
                         .font(.system(size: 12))  // 使用更小的字體
                         .foregroundColor(.secondary)  // 顏色柔和
                 }
                 
-                // 靈性探索
+                // 趣味探索
                 VStack(alignment: .leading, spacing: 4) {
-                    Button("靈性探索") {
+                    Button("其他探索") {
                         currentScreen = "WebViewScreen"  // 切換到 WebViewScreen
                         dismiss()  // 關閉視窗
                     }
-                    Text("深入靈性與命理的專業知識，了解更多宇宙能量的奧秘。")
+                    Text("了解更多與 AI 和身心靈相關的知識，探索全新生活靈感。")
                         .font(.system(size: 12))  // 使用更小的字體
                         .foregroundColor(.secondary)  // 顏色柔和
                 }
             }
-            .navigationTitle("選擇頁面")
+            .navigationTitle("選擇功能")
         }
         .presentationDetents([.fraction(0.4)])  // 將高度設為整個屏幕的 30%
     }

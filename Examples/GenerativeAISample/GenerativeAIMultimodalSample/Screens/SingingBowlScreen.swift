@@ -18,12 +18,12 @@ struct SingingBowlScreen: View {
         VStack {
             // 標題區域
             VStack {
-                Text("頌缽療癒")
+                Text("頌缽之音") // 替代「音癒」，更中性且專業
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.top, 40)
                 
-                Text("透過聲音療法放鬆心靈，提升正能量與內在平衡")
+                Text("利用聲音共振放鬆身心，釋放壓力，感受內在平衡與和諧")
                     .font(.body)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
