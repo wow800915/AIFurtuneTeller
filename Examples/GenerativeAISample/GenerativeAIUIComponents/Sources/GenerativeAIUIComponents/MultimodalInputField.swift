@@ -123,24 +123,25 @@ public struct MultimodalInputField: View {
             if let selectedImage {
                 selectedImage
                     .resizable()
-                    .scaledToFit() // 使用scaledToFit确保图片按比例缩放
-                    .frame(width: 150, height: 150) // 增大显示大小
+                    .scaledToFit() // 確保圖片按比例縮放
+                    .frame(width: 150, height: 150)
                     .cornerRadius(8)
-                    .padding(.bottom, 8) // 添加底部填充
+                    .padding(.bottom, 8)
                     .frame(maxWidth: .infinity, alignment: .center) // 水平置中
             }
             HStack(alignment: .top) {
                 Button(action: showChooseAttachmentTypePicker) {
                     Image(systemName: "plus")
+                        .background(Circle().fill(Color.blue.opacity(0.1)))
                 }
                 .padding(.top, 10)
                 
                 VStack(alignment: .leading) {
-                    Text("請新增照片,我們的 AI 將根據您的照片進行臉部特徵與環境分析，提供個人化的洞察與建議")
-                        .font(.system(size: 14)) // 自定義字體大小
-                        .foregroundColor(.secondary) // 可選：調整字體顏色
+                    Text("上傳您的照片，透過我們的 AI 技術分析，獲取個性化的洞察與建議")
+                        .font(.system(size: 14))
+                        .foregroundColor(.secondary)
                         .padding(.vertical, 4)
-                        .frame(maxWidth: .infinity, alignment: .leading) // 水平填滿畫面
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
@@ -155,38 +156,44 @@ public struct MultimodalInputField: View {
             
             HStack {
                 Button(action: submit) {
-                    Text("智能測算")
-                        .frame(maxWidth: .infinity, alignment: .leading) // 向左靠齊
-                        .frame(height: 30)
+                    Text("AI 洞察")
+                        .frame(maxWidth: .infinity, alignment: .center) // 改為置中對齊
+                        .frame(height: 40)
+                        .font(.body) // 調整字體大小
                 }
                 .padding(.horizontal, 4)
+                .background(RoundedRectangle(cornerRadius: 8).fill(Color.blue.opacity(0.2)))
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.blue, lineWidth: 2)
+                        .stroke(Color.blue, lineWidth: 1)
                 )
                 .padding(.top, 8)
                 
                 Button(action: submitPastLife) {
-                    Text("前世印記")
-                        .frame(maxWidth: .infinity, alignment: .leading) // 向左靠齊
-                        .frame(height: 30)
+                    Text("探索記憶")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .frame(height: 40)
+                        .font(.body)
                 }
                 .padding(.horizontal, 4)
+                .background(RoundedRectangle(cornerRadius: 8).fill(Color.blue.opacity(0.2)))
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.blue, lineWidth: 2)
+                        .stroke(Color.blue, lineWidth: 1)
                 )
                 .padding(.top, 8)
                 
                 Button(action: submitNaming) {
-                    Text("靈感命名")
-                        .frame(maxWidth: .infinity, alignment: .leading) // 向左靠齊
-                        .frame(height: 30)
+                    Text("靈韻起名")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .frame(height: 40)
+                        .font(.body)
                 }
                 .padding(.horizontal, 4)
+                .background(RoundedRectangle(cornerRadius: 8).fill(Color.blue.opacity(0.2)))
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.blue, lineWidth: 2)
+                        .stroke(Color.blue, lineWidth: 1)
                 )
                 .padding(.top, 8)
             }
@@ -195,13 +202,13 @@ public struct MultimodalInputField: View {
         .confirmationDialog(
             "選擇上傳方式",
             isPresented: $isChooseAttachmentTypePickerShowing,
-            titleVisibility: .hidden
+            titleVisibility: .visible // 顯示標題
         ) {
             Button(action: showAttachmentPicker) {
-                Text("照片與影片庫")
+                Text("從相簿選擇")
             }
             Button(action: checkCameraPermission) {
-                Text("使用相機拍攝")
+                Text("使用相機")
             }
         }
         .photosPicker(isPresented: $isAttachmentPickerShowing, selection: $selection, maxSelectionCount: 1)
@@ -226,7 +233,7 @@ public struct MultimodalInputField: View {
             }
         }
         .alert(isPresented: $isAlertPresented) {
-            Alert(title: Text("Camera Permission"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            Alert(title: Text("需要相機權限"), message: Text(alertMessage), dismissButton: .default(Text("確定")))
         }
     }
 }
