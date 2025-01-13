@@ -24,7 +24,7 @@ struct GenerativeAIMultimodalSampleApp: App {
             NavigationStack {
                 VStack {
                     HStack {
-                        Text("陳老師 AI 人生鏡")
+                        Text("陳老師AI人生鏡")
                             .font(.title) // 字體縮小到 "title"
                             .padding(.leading)
                         

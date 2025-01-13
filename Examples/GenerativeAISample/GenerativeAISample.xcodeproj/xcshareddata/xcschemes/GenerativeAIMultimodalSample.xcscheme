@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8848C8552B0D056C007B434F"
-               BuildableName = "AIFutureseer.app"
+               BuildableName = "AI LifeLens.app"
                BlueprintName = "GenerativeAIMultimodalSample"
                ReferencedContainer = "container:GenerativeAISample.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8848C8552B0D056C007B434F"
-            BuildableName = "AIFutureseer.app"
+            BuildableName = "AI LifeLens.app"
             BlueprintName = "GenerativeAIMultimodalSample"
             ReferencedContainer = "container:GenerativeAISample.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8848C8552B0D056C007B434F"
-            BuildableName = "AIFutureseer.app"
+            BuildableName = "AI LifeLens.app"
             BlueprintName = "GenerativeAIMultimodalSample"
             ReferencedContainer = "container:GenerativeAISample.xcodeproj">
          </BuildableReference>
