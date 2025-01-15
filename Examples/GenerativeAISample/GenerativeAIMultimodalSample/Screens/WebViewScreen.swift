@@ -9,7 +9,7 @@ import SwiftUI
 import WebKit
 
 struct WebViewScreen: View {
-    @State private var selectedURL: String = "https://www.lnka.tw"
+    @State private var selectedURL: String = "https://www.taiwan.net.tw/welcome_page.html"
 
     var body: some View {
         VStack {
@@ -18,7 +18,7 @@ struct WebViewScreen: View {
                 .padding(.top, 20)
             
             // 新增提示文字
-            Text("結合傳統方法與人工智慧技術，提供更全面的個人化建議。")
+            Text("以下資源鏈接均為外部網站，請依據您的需求自行選擇使用。")
                 .font(.system(size: 12)) // 使用更小的字體
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
@@ -28,9 +28,9 @@ struct WebViewScreen: View {
             // 4 個按鈕橫向排列
             HStack(spacing: 15) {
                 Button(action: {
-                    selectedURL = "https://www.lnka.tw"
+                    selectedURL = "https://www.taiwan.net.tw/welcome_page.html"
                 }) {
-                    Text("靈匣")
+                    Text("旅遊")
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.blue)
@@ -39,9 +39,9 @@ struct WebViewScreen: View {
                 }
                 
                 Button(action: {
-                    selectedURL = "https://www.ziwei.my"
+                    selectedURL = "https://www.ncl.edu.tw/"
                 }) {
-                    Text("紫微麥")
+                    Text("圖書館")
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.green)
@@ -50,9 +50,9 @@ struct WebViewScreen: View {
                 }
                 
                 Button(action: {
-                    selectedURL = "https://www.fgs.org.tw"
+                    selectedURL = "https://iplay.sa.gov.tw/"
                 }) {
-                    Text("佛光山")
+                    Text("運動場")
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.orange)
@@ -61,9 +61,9 @@ struct WebViewScreen: View {
                 }
                 
                 Button(action: {
-                    selectedURL = "https://astro.click108.com.tw/star/index.php"
+                    selectedURL = "https://www.gov.tw/"
                 }) {
-                    Text("星座")
+                    Text("健康")
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.purple)
