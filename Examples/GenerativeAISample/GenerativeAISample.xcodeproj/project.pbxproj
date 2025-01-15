@@ -959,7 +959,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GenerativeAIMultimodalSample/info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "CheerMaster AI";
-				INFOPLIST_KEY_NSCameraUsageDescription = "我們需要存取您的相機來拍攝照片，這些照片將用於分析面相和環境，以生成個性化的算命結果。";
+				INFOPLIST_KEY_NSCameraUsageDescription = "我們需要存取您的相機來拍攝照片，這些照片僅用於讓 AI 進行分析並提供適合的結果。照片不會被儲存在 App 中或傳送到其他地方，您的隱私將獲得充分保護。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -995,7 +995,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GenerativeAIMultimodalSample/info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "CheerMaster AI";
-				INFOPLIST_KEY_NSCameraUsageDescription = "我們需要存取您的相機來拍攝照片，這些照片將用於分析面相和環境，以生成個性化的算命結果。";
+				INFOPLIST_KEY_NSCameraUsageDescription = "我們需要存取您的相機來拍攝照片，這些照片僅用於讓 AI 進行分析並提供適合的結果。照片不會被儲存在 App 中或傳送到其他地方，您的隱私將獲得充分保護。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
