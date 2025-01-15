@@ -156,10 +156,10 @@ public struct MultimodalInputField: View {
             
             HStack {
                 Button(action: submit) {
-                    Text("妙趣洞察")
+                    Text("誇誇我吧!")
                         .frame(maxWidth: .infinity, alignment: .center) // 改為置中對齊
                         .frame(height: 40)
-                        .font(.body) // 調整字體大小
+                        .font(.caption) // 調整字體大小
                 }
                 .padding(.horizontal, 4)
                 .background(RoundedRectangle(cornerRadius: 8).fill(Color.blue.opacity(0.2)))
@@ -170,10 +170,10 @@ public struct MultimodalInputField: View {
                 .padding(.top, 8)
                 
                 Button(action: submitPastLife) {
-                    Text("前世趣聞")
+                    Text("讓我笑一笑")
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: 40)
-                        .font(.body)
+                        .font(.caption)
                 }
                 .padding(.horizontal, 4)
                 .background(RoundedRectangle(cornerRadius: 8).fill(Color.blue.opacity(0.2)))
@@ -184,10 +184,10 @@ public struct MultimodalInputField: View {
                 .padding(.top, 8)
                 
                 Button(action: submitNaming) {
-                    Text("雅致名銜")
+                    Text("幸福小秘方")
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: 40)
-                        .font(.body)
+                        .font(.caption)
                 }
                 .padding(.horizontal, 4)
                 .background(RoundedRectangle(cornerRadius: 8).fill(Color.blue.opacity(0.2)))
