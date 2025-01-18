@@ -93,7 +93,7 @@
 		8848C8462B0D051E007B434F /* GenerativeAITextSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerativeAITextSampleApp.swift; sourceTree = "<group>"; };
 		8848C84A2B0D051F007B434F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8848C84D2B0D051F007B434F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8848C8562B0D056C007B434F /* CheerMaster AI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CheerMaster AI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8848C8562B0D056C007B434F /* AI LifeLens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AI LifeLens.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8848C8582B0D056C007B434F /* GenerativeAIMultimodalSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerativeAIMultimodalSampleApp.swift; sourceTree = "<group>"; };
 		8848C85C2B0D056D007B434F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8848C85F2B0D056D007B434F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 			children = (
 				8848C82F2B0D04BC007B434F /* GenerativeAISample.app */,
 				8848C8442B0D051E007B434F /* GenerativeAITextSample.app */,
-				8848C8562B0D056C007B434F /* CheerMaster AI.app */,
+				8848C8562B0D056C007B434F /* AI LifeLens.app */,
 				88E10F422B110D5300C08E95 /* ChatSample.app */,
 			);
 			name = Products;
@@ -439,7 +439,7 @@
 				88B8A9362B0FCBE700424728 /* GenerativeAIUIComponents */,
 			);
 			productName = GenerativeAIMultimodalSample;
-			productReference = 8848C8562B0D056C007B434F /* CheerMaster AI.app */;
+			productReference = 8848C8562B0D056C007B434F /* AI LifeLens.app */;
 			productType = "com.apple.product-type.application";
 		};
 		88E10F412B110D5300C08E95 /* ChatSample */ = {
@@ -959,7 +959,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GenerativeAIMultimodalSample/info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "CheerMaster AI";
-				INFOPLIST_KEY_NSCameraUsageDescription = "我們需要存取您的相機來拍攝照片，這些照片將即時用於 AI 分析，以生成基於您臉部特徵和環境的個性化結果，例如提供正能量建議或環境評估。照片不會被儲存在本地或上傳至伺服器，僅限當次分析過程使用。您的隱私和數據安全將受到全面保護。";
+				INFOPLIST_KEY_NSCameraUsageDescription = "我們需要存取您的相機來拍攝照片，這些照片僅用於讓 AI 進行分析並提供適合的結果。照片不會被儲存在 App 中或傳送到其他地方，您的隱私將獲得充分保護。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -972,7 +972,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.weiyou.aifutureseer;
-				PRODUCT_NAME = "CheerMaster AI";
+				PRODUCT_NAME = "AI LifeLens";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -995,7 +995,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GenerativeAIMultimodalSample/info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "CheerMaster AI";
-				INFOPLIST_KEY_NSCameraUsageDescription = "我們需要存取您的相機來拍攝照片，這些照片將即時用於 AI 分析，以生成基於您臉部特徵和環境的個性化結果，例如提供正能量建議或環境評估。照片不會被儲存在本地或上傳至伺服器，僅限當次分析過程使用。您的隱私和數據安全將受到全面保護。";
+				INFOPLIST_KEY_NSCameraUsageDescription = "我們需要存取您的相機來拍攝照片，這些照片僅用於讓 AI 進行分析並提供適合的結果。照片不會被儲存在 App 中或傳送到其他地方，您的隱私將獲得充分保護。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1008,7 +1008,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.weiyou.aifutureseer;
-				PRODUCT_NAME = "CheerMaster AI";
+				PRODUCT_NAME = "AI LifeLens";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
