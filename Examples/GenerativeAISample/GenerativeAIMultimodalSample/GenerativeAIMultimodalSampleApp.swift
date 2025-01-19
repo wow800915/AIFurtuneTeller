@@ -72,7 +72,7 @@ struct PageSelectionDialog: View {
                         currentScreen = "PhotoReasoningScreen"  // 切換到 PhotoReasoningScreen
                         dismiss()  // 關閉視窗
                     }
-                    Text("上傳照片，通過 AI 技術獲取個性化洞察與生活靈感建議。")
+                    Text("透過 AI 提供趣味化的解讀，發現更多生活靈感！")
                         .font(.system(size: 12))  // 使用更小的字體
                         .foregroundColor(.secondary)  // 顏色柔和
                 }
@@ -83,7 +83,7 @@ struct PageSelectionDialog: View {
                         currentScreen = "SingingBowlScreen"  // 切換到 SingingBowlScreen
                         dismiss()  // 關閉視窗
                     }
-                    Text("利用聲音共振幫助身心放鬆，釋放壓力，體驗內在平衡與能量提升。")
+                    Text("透過聲音體驗身心放鬆，釋放壓力，帶來輕鬆愉快的享受！")
                         .font(.system(size: 12))  // 使用更小的字體
                         .foregroundColor(.secondary)  // 顏色柔和
                 }
@@ -94,7 +94,7 @@ struct PageSelectionDialog: View {
                         currentScreen = "WebViewScreen"  // 切換到 WebViewScreen
                         dismiss()  // 關閉視窗
                     }
-                    Text("了解更多與 AI 和身心靈相關的知識，探索全新生活靈感。")
+                    Text("發現更多趣味應用與探索，開啟更多生活靈感！")
                         .font(.system(size: 12))  // 使用更小的字體
                         .foregroundColor(.secondary)  // 顏色柔和
                 }

@@ -137,7 +137,7 @@ public struct MultimodalInputField: View {
                 .padding(.top, 10)
                 
                 VStack(alignment: .leading) {
-                    Text("上傳您的照片，透過我們的 AI 技術分析，獲取個性化的洞察與建議")
+                    Text("上傳您的照片，讓 AI 為您提供趣味化的分析與個性化建議，帶來更多生活靈感！")
                         .font(.system(size: 14))
                         .foregroundColor(.secondary)
                         .padding(.vertical, 4)
@@ -156,7 +156,7 @@ public struct MultimodalInputField: View {
             
             HStack {
                 Button(action: submit) {
-                    Text("妙趣洞察")
+                    Text("趣味解讀")
                         .frame(maxWidth: .infinity, alignment: .center) // 改為置中對齊
                         .frame(height: 40)
                         .font(.body) // 調整字體大小
@@ -184,7 +184,7 @@ public struct MultimodalInputField: View {
                 .padding(.top, 8)
                 
                 Button(action: submitNaming) {
-                    Text("雅致名銜")
+                    Text("名字探索")
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: 40)
                         .font(.body)
